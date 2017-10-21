@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :ratings
     resources :tools
+    resources :tags
 
     root to: "users#index"
   end

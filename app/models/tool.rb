@@ -2,6 +2,7 @@ class Tool < ApplicationRecord
   validates :name, uniqueness: true
   has_many :ratings
   has_many :comments
+  has_many :tags
 
   def effective_rating
     rating = ratings.where(name: 'effective').average('value')

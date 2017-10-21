@@ -5,10 +5,11 @@
       <tr>
         <th></th>
         <th><%= sort_link "name" %></th>
+        <th>Tags</th> 
         <th><%= sort_link "link" %></th>
         <th><%= sort_link "effective_rating" %></th>
         <th><%= sort_link "usable_rating" %></th>
-        <th><%= sort_link "intuitive_rating" %></th>     
+        <th><%= sort_link "intuitive_rating" %></th>  
         <th></th> 
       </tr>
     </thead>
@@ -17,6 +18,7 @@
         <tr>
           <td class="text-center"><%= image_tag(tool.image_url ? tool.image_url : '') %></td>
           <td><%= tool.name %></td>
+          <td><%= tool.tags.pluck(:name).join(', ') %></td>
           <td><%= tool.link %></td>
           <td><%= tool.effective_rating %></td>
           <td><%= tool.usable_rating %></td>
