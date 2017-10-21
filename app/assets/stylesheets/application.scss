@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .table{
+   img{
+     max-height: 21px;
+   }
+ }
+
+ .background-image{
+   position: absolute;
+    height: 100%; 
+    width: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: image-url('background.jpg');
+ }
+
+ #outPopUp {
+  position: absolute;
+  width: 400px;
+  height: 150px;
+  z-index: 15;
+  top: 40%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+  text-align: center;
+}
+
+.show-ratings{
+  font-size: 18px;
+  div{
+    text-align: center;
+    height: 200px;
+    line-height: 200px;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+}
+
+.comments{
+  padding: 20px;
+  border-top: 1px solid #ccc;
+  margin-top: 2px;
+}
+
+.new-comment{
+  width: 100%;
+  background-color: lightblue;
+  padding: 20px 0 10px;
+}
+
+.new-rating{
+  width: 100%;
+  background-color: lightblue;
+  padding: 10px 0;
+  margin: 10px 0;
+}

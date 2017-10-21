@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Explore Tools</h1>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= sort_link "name" %></th>
+        <th><%= sort_link "link" %></th>
+        <th><%= sort_link "effective_rating" %></th>
+        <th><%= sort_link "usable_rating" %></th>
+        <th><%= sort_link "intuitive_rating" %></th>     
+        <th></th> 
+      </tr>
+    </thead>
+    <tbody>
+      <% @tools.each do |tool| %>
+        <tr>
+          <td class="text-center"><%= image_tag(tool.image_url ? tool.image_url : '') %></td>
+          <td><%= tool.name %></td>
+          <td><%= tool.link %></td>
+          <td><%= tool.effective_rating %></td>
+          <td><%= tool.usable_rating %></td>
+          <td><%= tool.intuitive_rating %></td>
+          <td>          
+            <%= link_to("Read More", "/tools/#{tool.id}") %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

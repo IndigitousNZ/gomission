@@ -1,0 +1,63 @@
+<div class="container">
+  <h2><%= @tool.name %></h2>
+  (Based on <%= @tool.ratings_number %> user reviews)
+  <div class="row show-ratings justify-content-center align-self-center">
+    <div class="col-sm">
+      Effective: 
+      <%= @tool.effective_rating %>
+    </div>
+    <div class="col-sm">
+      Usable: 
+      <%= @tool.usable_rating %>    
+    </div>
+    <div class="col-sm">
+      Intuitive: 
+      <%= @tool.intuitive_rating %>
+    </div>
+  </div>
+  <%= image_tag(@tool.image_url) if @tool.image_url %>
+  <% unless current_user.ratings.where(tool_id: @tool.id).exists? %> 
+    
+  <% end %>
+</div>
+<div class="new-rating">
+  <div class="container">
+  <h4>Rate this app!</h4>
+  
+  <%= form_tag("/ratings?tool_id=" + @tool.id.to_s, method: "post", class: "form-inline") do %>
+      <div class="form-group">
+        <%= label_tag(:effective, "Effective (1-10):") %>
+        <%= number_field_tag(:effective, nil, class: "form-control", min: 1, max: 10, value: 5) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:usability, "Usable (1-10):") %>
+        <%= number_field_tag(:usable, nil, class: "form-control", min: 1, max: 10, value: 5) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:intuitive, "Intuitive (1-10):") %>
+        <%= number_field_tag(:intuitive, nil, class: "form-control", min: 1, max: 10, value: 5) %>
+      </div>
+      <%= submit_tag("Submit", class: "btn btn-primary") %>
+  <% end %>
+  </div>
+</div>
+<div class="container">
+  <h4>User Feedback(<%= @tool.comments_number %>)</h4>
+  <% @tool.comments.each do |comment| %>
+    <div class="row comments"> 
+      <b><%= comment.user.name %></b>:  
+      <%= comment.content %>
+    </div>
+  <% end %>
+</div>
+<div class="new-comment">
+  <div class="container">
+    <h5>Leave your feedback</h5>  
+    <%= form_tag("/comments?tool_id=" + @tool.id.to_s, method: "post") do %>
+      <div class="form-group">
+        <%= text_area_tag('new_comment', nil, rows: 5, class: "form-control") %>    
+      </div>
+      <%= submit_tag("Submit", class: "btn btn-primary") %>    
+    <% end %>  
+  </div>
+</div>
